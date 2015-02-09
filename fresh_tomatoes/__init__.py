@@ -1,11 +1,12 @@
 import os
 import re
-import SimpleHTTPServer
 import SocketServer
 import webbrowser
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+
 import entertainment_center
-
-
+import fresh_tomatoes
+import media
 
 def get_html_template (path) :
     '''
@@ -88,11 +89,14 @@ def start_server (port) :
     @param [Int] port: port number for server to listen to on localhost
     '''
 
+    class TCPServer (SocketServer.TCPServer) :
+        allow_reuse_address = True
+
+
     os.chdir('public')
-    Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-    httpd = SocketServer.TCPServer(("", int(port)), Handler)
     print("serving at port " + str(port))
-    httpd.serve_forever()
+    server = TCPServer(('0.0.0.0', int(port)), SimpleHTTPRequestHandler)
+    server.serve_forever()
 
 
 
@@ -108,7 +112,7 @@ def open_movies_page (port) :
 
 
 
-def start (port = 8080) :
+def start (port = 8000) :
     generate_index_page(entertainment_center.movies)
     open_movies_page(port)
     start_server(port)
