@@ -8,7 +8,8 @@ import entertainment_center
 import fresh_tomatoes
 import media
 
-def get_html_template (path) :
+
+def get_html_template(path):
     '''
     Open the html file at the specified path. Read, close and return contents
 
@@ -23,24 +24,7 @@ def get_html_template (path) :
     return template
 
 
-
-def get_youtube_id (youtube_url) :
-    '''
-    Extract the youtube ID from a youtube url
-
-    @param [String] youtube_url
-    @return [String] youtube id
-    '''
-
-    youtube_id_match = re.search(r'(?<=v=)[^&#]+', youtube_url)
-    youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', youtube_url)
-    youtube_id = youtube_id_match.group(0) if youtube_id_match else None
-
-    return youtube_id
-
-
-
-def create_movie_tiles (movies) :
+def create_movie_tiles(movies):
     '''
     Load movie tile template, iterate over movies list and generate movie tiles
 
@@ -53,16 +37,15 @@ def create_movie_tiles (movies) :
 
     for movie in movies:
         movie_tiles += movie_tile_template.format(
-            movie_title = movie.title,
-            poster_image_url = movie.poster_image_url,
-            trailer_youtube_id = get_youtube_id(movie.trailer_youtube_url)
+            movie_title=movie.title,
+            poster_image_url=movie.poster_image_url,
+            trailer_youtube_id=movie.youtube_trailer_id
         )
 
     return movie_tiles
 
 
-
-def generate_index_page (movies) :
+def generate_index_page(movies):
     '''
     Create or overwrite the index.html file.
     Load page layout template and replace movie tiles placeholder with
@@ -80,8 +63,7 @@ def generate_index_page (movies) :
     index_page.close()
 
 
-
-def start_server (port) :
+def start_server(port):
     '''
     Set up a simple http server to allow serving static assests
     i.e. css stylesheets and javascript files
@@ -89,18 +71,16 @@ def start_server (port) :
     @param [Int] port: port number for server to listen to on localhost
     '''
 
-    class TCPServer (SocketServer.TCPServer) :
+    class TCPServer (SocketServer.TCPServer):
         allow_reuse_address = True
 
-
     os.chdir('public')
-    print("serving at port " + str(port))
+    print('serving at port ' + str(port))
     server = TCPServer(('0.0.0.0', int(port)), SimpleHTTPRequestHandler)
     server.serve_forever()
 
 
-
-def open_movies_page (port) :
+def open_movies_page(port):
     '''
     Open web browser to movie app on localhost
     Open in a new tab, if possible
@@ -108,11 +88,10 @@ def open_movies_page (port) :
     @param [Int] port: port number that the server is listening to on localhost
     '''
 
-    webbrowser.open("http://localhost:" + str(port), new = 2)
+    webbrowser.open('http://localhost:' + str(port), new=2)
 
 
-
-def start (port = 8000) :
+def start(port=8000):
     generate_index_page(entertainment_center.movies)
     open_movies_page(port)
     start_server(port)
