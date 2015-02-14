@@ -9,9 +9,16 @@ body {
 }
 
 .hanging-close {
+  background: #fff;
+  border-radius: 50%;
+  display: block;
+  font-size: 16px;
+  line-height: 0.7;
+  padding: .3em;
   position: absolute;
-  top: -12px;
   right: -12px;
+  text-decoration: none !important;
+  top: -12px;
   z-index: 9001;
 }
 
