@@ -1,10 +1,8 @@
-@import 'vendor/normalize';
+$color-body: #414042;
 
-@import 'config/mixins';
-@import 'config/variables';
-
+@import 'mixins';
 @import 'typography';
-@import 'grid';
 @import 'base';
+@import 'grid';
 @import 'header';
 @import 'modal';
