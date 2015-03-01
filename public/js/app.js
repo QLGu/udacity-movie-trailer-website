@@ -48,10 +48,8 @@ function createModal (trailerID) {
   elModal.innerHTML = '' +
     '<div class="modal">' +
       '<div class="inner__modal">' +
-        '<div class="modal__content">' +
-          '<div class="modal__body">' +
-            '<iframe src="' + sourceUrl + '" border="0"></iframe>' +
-          '</div>' +
+        '<div class="wrap__iframe">' +
+          '<iframe src="' + sourceUrl + '" border="0"></iframe>' +
           '<div id="modal__close" class="modal__close">&times;</div>' +
         '</div>' +
       '</div>' +
