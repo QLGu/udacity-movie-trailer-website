@@ -42,11 +42,10 @@ hr,input[type=search]{box-sizing:content-box}legend,main li,ol,td,th,ul{padding:
   position: relative;
 }
 
-
 .wrap__iframe:before{
 	content: "";
 	display: block;
-	padding-top: 56.25%;	/* initial ratio of 16:9*/
+	padding-top: 56.25%;
 }
 
 .wrap__iframe iframe {
