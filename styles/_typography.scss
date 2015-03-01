@@ -1,0 +1,112 @@
+$font-body:   'Lato', Arial, sans-serif;
+$font-med:    'Lato', Arial, sans-serif;
+$font-header: $font-body;
+$headers:     'h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6';
+
+$color-body: #414042;
+$color-header: $color-body;
+
+html {
+  font-size: vw(16px, 640px);
+
+  @include bp(0, 320px) {
+    font-size: 10px;
+  }
+
+  @include bp(1000px - 100px) {
+    font-size: vw(16px);
+  }
+
+  @include bp(1300px) {
+    font-size: 21px;
+  }
+}
+
+body {
+  color: $color-body;
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: (14 / 12);
+}
+
+%headers {
+  color: $color-header;
+  font-family: $font-header;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.index .tile__heading,
+.letter-spacing {
+  letter-spacing: rem(4px);
+}
+
+main {
+
+  p,
+  li {
+    font-size: rem(12);
+  }
+
+  li {
+    margin: 0 0 .4em;
+    padding: 0;
+
+    a {
+      color: $color-header;
+      text-decoration: none;
+    }
+  }
+}
+
+p,
+li,
+address {
+  line-height: 1.45;
+  margin: 0 0 1em;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+
+  article & {
+    margin: 0 0 1em;
+  }
+}
+
+li {
+  list-style: none;
+
+  ol & {
+    list-style: decimal;
+  }
+
+  article ol & {
+    margin-left: 1.5em;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+
+  &:active,
+  &:hover {
+    outline: 0;
+    text-decoration: underline;
+  }
+}
+
+[data-no-navigate] {
+  cursor: pointer;
+}
+
+blockquote {
+  border-bottom: 1px dotted;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 15px;
+}

@@ -1,0 +1,101 @@
+////
+// Clearfix
+//
+%cf {
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+
+////
+// Srtip units from a value
+//
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+$em-base: 16px;
+$vw-base: 960px;
+
+////
+// Convert pixels to vws
+//
+@function vw($pxval, $base: $vw-base) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 100vw;
+}
+
+
+////
+// Convert pixels to rems
+//
+@function rem($pxval) {
+  @if not unitless($pxval) {
+    $pxval: strip-units($pxval);
+  }
+
+  $base: $em-base;
+  @if not unitless($base) {
+    $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}
+
+
+////
+// MEDIA QUERIES
+
+@mixin bp($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type == string {
+
+    $mobile : 308px !default;
+    $tablet : 580px !default;
+    $desktop: 900px !default;
+    $buffer : 20px;
+
+    @if $min == mobile {
+      @media only screen and (max-width: $tablet + $buffer - 1px) { @content; }
+    }
+
+    @else if $min == tablet-down {
+      @media only screen and (max-width: $desktop + $buffer - 1px) { @content; }
+    }
+
+    @else if $min == tablet {
+      @media only screen and (max-width: $desktop + $buffer - 1px) and (min-width: $tablet + $buffer) { @content; }
+    }
+
+    @else if $min == tablet-up {
+      @media only screen and (min-width: $tablet + $buffer) { @content; }
+    }
+
+    @else if $min == desktop {
+      @media only screen and (min-width: $desktop + $buffer) { @content; }
+    }
+
+    @else {
+      @warn 'The breakpoint mixin supports the following attributes: mobile, tablet-down, tablet, tablet-up, desktop';
+    }
+  }
+
+  @else if $type == number {
+    // Allow for custom parameters for min and max size
+    $query: 'all' !default;
+    @if      $min != 0 and $max != 0 { $query: '(min-width: #{$min}) and (max-width: #{$max})'; } // set both min and max
+    @else if $min != 0 and $max == 0 { $query: '(min-width: #{$min})'; } // set just min
+    @else if $min == 0 and $max != 0 { $query: '(max-width: #{$max})'; } // set just max
+    @media #{$query} { @content; }
+  }
+}

@@ -1,0 +1,56 @@
+.wrap__modal {
+  background-color: rgba(50, 50, 50, .9);
+  color: #fff;
+  display: block;
+  font-family: sans-serif;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99999999;
+}
+
+.modal {
+  display: table;
+  height: 100vh;
+  margin: auto;
+}
+
+.inner__modal {
+  display: table-cell;
+  margin: auto;
+  position: relative;
+  vertical-align: middle;
+  width: 80vw;
+}
+
+.modal__close {
+  cursor: pointer;
+  font-size: 32px;
+  position: absolute;
+  right: -18px;
+  top: -27px;
+}
+
+.wrap__iframe {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 56.25%;
+  }
+
+  iframe {
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}
