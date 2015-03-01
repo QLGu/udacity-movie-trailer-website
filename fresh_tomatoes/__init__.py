@@ -60,6 +60,7 @@ def create_movie_tiles(movies):
     for movie in movies:
         movie_tiles += movie_tile_template.format(
             movie_title=movie.title,
+            movie_year=movie.year,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=movie.youtube_trailer_id
         )

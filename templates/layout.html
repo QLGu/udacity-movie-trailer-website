@@ -3,38 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>Fresh Tomatoes!</title>
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/bootstrap-theme.css">
+  <meta name="description" content="Fresh Tomatoes | Movie Trailer Website">
+  <link rel='stylesheet'
+        href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900'>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <div class="body__wrap">
 
-  <div class="modal" id="trailer">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">&times;</a>
-        <div class="scale-media" id="trailer-video-container">
-        </div>
-      </div>
+    <div class="wrap_header">
+      <header id="header" class="header">
+        <nav>
+          <a class="logo" href="/">Fresh Tomatoes Movie Trailers</a>
+        </nav>
+      </header>
+
+      <header class="header header--sentinal">
+        <nav>
+          <a class="logo" href="/">Fresh Tomatoes Movie Trailers</a>
+        </nav>
+      </header>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">Fresh Tomatoes Movie Trailers</a>
-        </div>
+    <main class="main grid cf">
+      <div id="movies" class="movies cf">
+        {movie_tiles}
       </div>
-    </div>
+    </main>
+
   </div>
 
-  <div class="container">
-    {movie_tiles}
-  </div>
-
-  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
   <script src="/js/app.js"></script>
 </body>
 </html>

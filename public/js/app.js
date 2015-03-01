@@ -1,25 +1,61 @@
-// Pause the video when the modal is closed
-$(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
-    // Remove the src so the player itself gets removed, as this is the only
-    // reliable way to ensure the video stops playing in IE
-    $("#trailer-video-container").empty();
-});
+var elMovies = document.getElementById('movies')
 
-// Start playing the video whenever the trailer modal is opened
-$(document).on('click', '.movie-tile', function (event) {
-    var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
-    var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
-    $("#trailer-video-container").empty().append($("<iframe></iframe>", {
-      'id': 'trailer-video',
-      'type': 'text-html',
-      'src': sourceUrl,
-      'frameborder': 0
-    }));
-});
+/**
+ * Add modal event listener
+ */
+elMovies.addEventListener('click', function (event) {
+  event = event || window.event
+  var target = event.target || event.srcElement
 
-// Animate in the movies when the page loads
-$(document).ready(function () {
-  $('.movie-tile').hide().first().show("fast", function showNext() {
-    $(this).next("div").show("fast", showNext);
-  });
-});
+  while (!target.classList.contains('movie-tile')) {
+    target = target.parentNode
+  }
+
+  addModal(target.getAttribute('data-trailer-id'))
+})
+
+/******************************************************************************/
+
+/**
+ * Add modal
+ */
+function addModal (trailerID) {
+  var model = createModal(trailerID)
+  document.body.appendChild(model)
+}
+
+
+/**
+ * Remove modal
+ */
+function removeModal () {
+  document.body.removeChild(document.getElementById('modal'))
+}
+
+/******************************************************************************/
+
+/**
+ * Create modal wth trailer video
+ */
+function createModal (trailerID) {
+  var sourceUrl = 'http://www.youtube.com/embed/' +
+      trailerID + '?autoplay=1&html5=1'
+
+  var elModal = document.createElement('div')
+  elModal.addEventListener('click', removeModal)
+  elModal.id = 'modal'
+  elModal.className = 'wrap__modal'
+  elModal.innerHTML = '' +
+    '<div class="modal">' +
+      '<div class="inner__modal">' +
+        '<div class="modal__content">' +
+          '<div class="modal__body">' +
+            '<iframe src="' + sourceUrl + '" border="0"></iframe>' +
+          '</div>' +
+          '<div id="modal__close" class="modal__close">&times;</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+
+  return elModal
+}

@@ -8,4 +8,6 @@
 
 ### notes
 
-using PEP8 style guide
+- using PEP8 style guide
+- removed bootstrap
+- removed jQuery
