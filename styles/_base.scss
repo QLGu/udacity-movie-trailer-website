@@ -30,22 +30,10 @@ img {
   max-width: 100%;
 }
 
-.hidden,
-[aria-hidden=true] {
-  display: none !important;
-  visibility: hidden;
-}
-
-////////////////////////////////////////////////////////////////////////////////
 
 .body__wrap {
   background-color: #fff;
   min-height: 100vh;
   position: relative;
   z-index: 1;
-}
-
-.body__main {
-  margin: auto;
-  overflow: hidden;
 }

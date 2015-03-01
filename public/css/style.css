@@ -32,25 +32,9 @@ body {
   font-size: 1rem;
   font-weight: 300; }
 
-main p, main li {
-  font-size: 0.75rem; }
-main li {
-  margin: 0 0 .4em;
-  padding: 0; }
-  main li a {
-    color: inherit;
-    text-decoration: none; }
-
-p {
-  line-height: 1.45;
-  margin: 0 0 1em; }
-
 a {
   color: inherit;
-  text-decoration: underline; }
-  a:active, a:hover {
-    outline: 0;
-    text-decoration: underline; }
+  text-decoration: none; }
 
 *, *:after, *:before {
   box-sizing: border-box; }
@@ -69,19 +53,11 @@ header, nav, main, article, aside, section, footer, .cf {
 img {
   max-width: 100%; }
 
-.hidden, [aria-hidden=true] {
-  display: none !important;
-  visibility: hidden; }
-
 .body__wrap {
   background-color: #fff;
   min-height: 100vh;
   position: relative;
   z-index: 1; }
-
-.body__main {
-  margin: auto;
-  overflow: hidden; }
 
 .grid-tile {
   float: left;
@@ -147,26 +123,9 @@ img {
   position: fixed;
   width: 100%;
   z-index: 99999; }
-  .header a {
-    display: inline-block;
-    line-height: 16px;
-    padding: 22px;
-    text-decoration: none !important; }
 
 .header--sentinal {
   position: static !important; }
-
-.nav {
-  position: absolute;
-  right: 0;
-  top: 0; }
-  .nav li {
-    display: inline-block;
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-  .nav a {
-    padding: 38px 2.5rem 38px 0; }
 
 .wrap__modal {
   background-color: rgba(50, 50, 50, 0.9);
