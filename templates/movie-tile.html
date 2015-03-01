@@ -1,9 +1,14 @@
-<div class="movie-tile grid-tile" data-trailer-id="{trailer_youtube_id}">
+<div class="movie-tile grid-tile">
   <div class="wrap__grid-tile_content">
-    <img src="{poster_image_url}">
-    <div class="grid-tile_content">
-      <div class="tile__heading">{movie_title}</div>
-      <div class="tile__subheading">{movie_year}</div>
-    </div>
+    <div class="movie-figure">
+      <img src="{poster_image_url}" alt="{movie_title}">
+			<div class="view_trailer" data-trailer-id="{trailer_youtube_id}">
+        Watch trailer
+      </div>
+  		<div class="movie-caption">
+  			<div class="tile__heading">{movie_title}</div>
+        <div class="tile__subheading">{movie_year}</div>
+  		</div>
+  	</div>
   </div>
 </div>

@@ -7,7 +7,7 @@ elMovies.addEventListener('click', function (event) {
   event = event || window.event
   var target = event.target || event.srcElement
 
-  while (!target.classList.contains('movie-tile'))
+  while (!target.classList.contains('view_trailer'))
   target = target.parentNode
 
   addModal(target.getAttribute('data-trailer-id'))
