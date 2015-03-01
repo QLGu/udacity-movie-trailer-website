@@ -1,12 +1,12 @@
+import json
 import os
 import re
 import SocketServer
 import webbrowser
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 
-import entertainment_center
-import fresh_tomatoes
-import media
+# import entertainment_center
+from movie import Movie
 
 
 def get_html_template(path):
@@ -24,6 +24,29 @@ def get_html_template(path):
     return template
 
 
+def get_movies(filename):
+    '''
+    Retrive movie data from a JSON file in form of Movie objects
+
+    @param [String] path: relative filepath to JSON file
+    @return [Array] list of generated Movie objects
+    '''
+    movies = []
+
+    json_data = open(os.path.dirname(__file__) + '/' + filename, 'r')
+    movie_data = json.load(json_data)
+
+    for movie in movie_data:
+        movies.append(Movie(title=movie['name'],
+                            year=movie['year'],
+                            storyline=movie['storyline'],
+                            poster_image_url=movie['poster_image_url'],
+                            youtube_trailer_id=movie['youtube_trailer_id']))
+
+    json_data.close()
+    return movies
+
+
 def create_movie_tiles(movies):
     '''
     Load movie tile template, iterate over movies list and generate movie tiles
@@ -31,7 +54,6 @@ def create_movie_tiles(movies):
     @param [List] movies
     @return [String] movie_tiles
     '''
-
     movie_tile_template = get_html_template('../templates/movie-tile')
     movie_tiles = ''
 
@@ -92,6 +114,7 @@ def open_movies_page(port):
 
 
 def start(port=8000):
-    generate_index_page(entertainment_center.movies)
+    movies = get_movies('../data/media.json')
+    generate_index_page(movies)
     open_movies_page(port)
     start_server(port)
