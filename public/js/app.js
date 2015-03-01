@@ -39,19 +39,34 @@ function createModal (trailerID) {
   var sourceUrl = 'http://www.youtube.com/embed/' +
   trailerID + '?autoplay=1&html5=1'
 
-  var elModal = document.createElement('div')
-  elModal.addEventListener('click', removeModal)
-  elModal.id = 'modal'
-  elModal.className = 'wrap__modal'
-  elModal.innerHTML = '' +
-  '<div class="modal">' +
-  '<div class="inner__modal">' +
-  '<div class="wrap__iframe">' +
-  '<iframe src="' + sourceUrl + '" border="0"></iframe>' +
-  '<div id="modal__close" class="modal__close">&times;</div>' +
-  '</div>' +
-  '</div>' +
-  '</div>'
+  var elWrapModal = document.createElement('div')
+  elWrapModal.addEventListener('click', removeModal)
+  elWrapModal.id = 'modal'
+  elWrapModal.className = 'wrap__modal'
 
-  return elModal
+  var elModal = document.createElement('div')
+  elModal.className = 'modal'
+
+  var elInnerModal = document.createElement('div')
+  elInnerModal.className = 'inner__modal'
+
+  var elWrapIframe = document.createElement('div')
+  elWrapIframe.className = 'wrap__iframe'
+
+  var elIframe = document.createElement('iframe')
+  elIframe.src = sourceUrl
+
+  var elModelClose = document.createElement('div')
+  elModelClose.id = 'modal__close'
+  elModelClose.className = 'modal__close'
+  elModelClose.innerHTML = '&times;'
+
+  elWrapIframe.appendChild(elIframe)
+  elWrapIframe.appendChild(elModelClose)
+
+  elInnerModal.appendChild(elWrapIframe)
+  elModal.appendChild(elInnerModal)
+  elWrapModal.appendChild(elModal)
+
+  return elWrapModal
 }
