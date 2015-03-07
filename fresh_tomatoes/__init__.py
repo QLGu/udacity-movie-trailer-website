@@ -5,7 +5,6 @@ import SocketServer
 import webbrowser
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 
-# import entertainment_center
 from movie import Movie
 
 
