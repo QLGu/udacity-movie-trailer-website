@@ -13,8 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://pythonic1@bitbucket.org/pythonic1/full-stack-nanodegree-project-1.git"
+    "url": "https://github.com/pythonic1/udacity-movie-trailer-website.git"
   },
   "author": "pythonic1@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pythonic1/udacity-movie-trailer-website/issues"
+  },
+  "homepage": "https://github.com/pythonic1/udacity-movie-trailer-website",
+  "dependencies": {
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp": "^3.8.11",
+    "gulp-sass": "^1.3.3",
+    "node-sass": "^2.0.1"
+  }
 }
