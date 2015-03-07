@@ -13,6 +13,8 @@ The default port is 8000, however you can specify your own like so:
 
     python index.py 8080
 
+You can view the resulting website at the [demo page](http://pythonic1.github.io/udacity-movie-trailer-website/public/)
+
 
 ### Notes
 
